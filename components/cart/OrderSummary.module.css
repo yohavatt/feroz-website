@@ -1,0 +1,149 @@
+.wrap {
+  background: var(--color-olive-950);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: sticky;
+  top: 100px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.01em;
+  margin-bottom: 22px;
+  color: var(--color-cream-100);
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 14px;
+  color: rgba(244, 239, 227, 0.8);
+  margin-bottom: 18px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.discountRow {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-gold-500);
+}
+
+.promoRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.promoInput {
+  flex: 1;
+  min-width: 0;
+  background: var(--color-ink);
+  border: 1px solid rgba(244, 239, 227, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 12px 18px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-cream-100);
+}
+
+.applyBtn {
+  background: transparent;
+  border: 1.5px solid var(--color-gold-500);
+  border-radius: var(--radius-pill);
+  padding: 0 18px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-cream-100);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.applyBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.promoError {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-rust-500);
+  margin-top: -12px;
+  margin-bottom: 16px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(244, 239, 227, 0.15);
+  margin-bottom: 18px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.totalLabel {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-cream-100);
+}
+
+.totalValue {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--color-cream-100);
+}
+
+.checkoutBtn {
+  width: 100%;
+  background: var(--color-ink);
+  color: var(--color-cream-100);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 17px 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  margin-bottom: 14px;
+}
+
+.checkoutBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.shippingNote {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrap {
+    padding: 26px 22px;
+  }
+
+  .promoInput {
+    padding: 14px 18px;
+  }
+}

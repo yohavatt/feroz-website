@@ -1,0 +1,141 @@
+.imageWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-olive-700);
+  aspect-ratio: 1 / 1.1;
+}
+
+.imageLink {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* --card-image-scale / --card-image-position let a single card be framed
+   closer when its source photo is shot further out than its siblings; both
+   default to the previous behaviour (no scale, centred crop). The hover
+   zoom multiplies the scale so both states stay consistent. */
+.image {
+  object-fit: cover;
+  object-position: var(--card-image-position, 50% 50%);
+  transform: scale(var(--card-image-scale, 1));
+  transition: transform 0.4s;
+}
+
+.imageWrap:hover .image {
+  transform: scale(calc(var(--card-image-scale, 1) * 1.05));
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.wishlistBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  background: rgba(21, 21, 15, 0.55);
+  border: none;
+  color: var(--color-cream-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.wishlistBtn:hover {
+  background: var(--color-cream-100);
+  color: var(--color-ink);
+}
+
+.info {
+  padding-top: 14px;
+}
+
+.name {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-cream-100);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-cream-100);
+}
+
+.compareAt {
+  font-size: 13px;
+  color: rgba(244, 239, 227, 0.5);
+  text-decoration: line-through;
+}
+
+.discountPct {
+  font-size: 12px;
+  color: var(--color-gold-500);
+  font-family: var(--font-mono);
+}
+
+.swatches {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.sizes {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.sizeChip {
+  min-width: 34px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
+  border-width: 1.5px;
+  border-style: solid;
+  /* border-color set inline per chip (selected vs. unselected) */
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+/* Literal one-off hover color from source, scoped to this interaction only. */
+.sizeChip:hover {
+  border-color: #7d9160;
+}
+
+/* In the two-up phone grid a sale price + compare-at + discount can exceed
+   the card width, so the row is allowed to wrap. */
+@media (max-width: 600px) {
+  .priceRow {
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+}

@@ -1,0 +1,197 @@
+.header {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(56px, 7vw, 80px) 4vw 0;
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5vw, 54px);
+  margin: 0 0 14px;
+  color: #928856;
+  line-height: 1;
+}
+
+.subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(244, 239, 227, 0.75);
+  margin: 0 0 32px;
+}
+
+.searchRow {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+}
+
+.searchInput {
+  flex: 1;
+  background: var(--color-cream-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 15px 22px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-ink);
+}
+
+.searchBtn {
+  background: var(--color-ink);
+  color: var(--color-cream-100);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0 26px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.searchBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.clearBtn {
+  background: transparent;
+  border: 1.5px solid rgba(244, 239, 227, 0.3);
+  color: var(--color-cream-100);
+  border-radius: var(--radius-pill);
+  padding: 0 20px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.clearBtn:hover {
+  border-color: var(--color-gold-500);
+  color: var(--color-gold-500);
+}
+
+.noResults {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: clamp(64px, 9vw, 96px) 4vw;
+  text-align: center;
+}
+
+.noResultsIcon {
+  margin-bottom: 20px;
+}
+
+.noResultsTitle {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 28px);
+  margin: 0 0 12px;
+  color: var(--color-cream-100);
+}
+
+.noResultsBody {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(244, 239, 227, 0.7);
+  margin: 0 0 24px;
+}
+
+.clearSearchBtn {
+  background: var(--color-ink);
+  color: var(--color-cream-100);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 14px 32px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.clearSearchBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.resultsGrid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 56px) 4vw clamp(64px, 9vw, 110px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 1.1fr);
+  gap: clamp(28px, 4vw, 44px);
+  align-items: start;
+}
+
+.storeList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 640px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.mapWrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--color-olive-700);
+  height: 640px;
+}
+
+.map {
+  border: 0;
+  display: block;
+  filter: grayscale(0.15) contrast(1.05);
+}
+
+/* Stacked: the map leads as an overview, followed by the full store list.
+   The list's own inner scroll is dropped so the page scrolls as one. */
+@media (max-width: 900px) {
+  .resultsGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .mapWrap {
+    order: -1;
+    height: 420px;
+  }
+
+  .storeList {
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .searchRow {
+    flex-wrap: wrap;
+  }
+
+  .searchInput {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .searchBtn,
+  .clearBtn {
+    flex: 1;
+    min-height: 48px;
+  }
+
+  .resultsGrid {
+    padding-top: 32px;
+    gap: 20px;
+  }
+
+  .mapWrap {
+    height: 300px;
+  }
+}

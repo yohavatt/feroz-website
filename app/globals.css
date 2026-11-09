@@ -1,0 +1,140 @@
+/*
+  FEROZ design tokens — transcribed value-for-value from
+  "FEROZ Design System.dc.html" (sections 01-04) and the shared
+  <helmet><style> reset present on every source page.
+
+  This file is the single source of truth for color, spacing, radius,
+  and base typography. Component CSS should reference these custom
+  properties, never hardcode hex values or px sizes directly.
+*/
+
+:root {
+  /* ---- 01 Color palette ---- */
+  --color-ink: #15150f; /* buttons + nav chrome on light contexts */
+  --color-olive-950: #1e2418;
+  --color-olive-800: #313d28; /* primary page background */
+  --color-olive-600: #47552f;
+  --color-gold-500: #b7a06b; /* accent — hero moments, key accents only, never a large fill */
+  --color-gold-600: #8c7a4e; /* deep gold */
+  --color-cream-100: #f4efe3;
+  --color-cream-200: #ece6d6;
+
+  /* Observed in every page's form-error / sale-badge / discount usage but
+     NOT one of the 8 documented palette swatches — kept as a named token
+     since it is used consistently, flagged for confirmation. */
+  --color-rust-500: #8c4e3a;
+
+  /* Same situation: used repeatedly as the placeholder/backdrop fill behind
+     product photography (cards, thumbnails) across every page, but not one
+     of the 8 documented swatches either. Named by where it falls in the
+     Olive progression (darker than Olive 600, lighter than Olive 800). */
+  --color-olive-700: #3e4a30;
+
+  /* ---- 03 Spacing scale ---- */
+  --space-xs: 4px; /* icon gaps, tight inline spacing */
+  --space-sm: 8px; /* badge padding, chip gaps */
+  --space-md: 16px; /* card padding, form field gaps */
+  --space-lg: 24px; /* grid gutters, section inner gaps */
+  --space-xl: 48px; /* between related blocks */
+  --space-2xl: 96px; /* section vertical rhythm */
+  --space-3xl: 160px; /* major section breaks */
+
+  /* ---- 04 Border radius scale ---- */
+  --radius-none: 0;
+  --radius-sm: 8px; /* inputs */
+  --radius-md: 16px; /* badges, buttons */
+  --radius-lg: 24px; /* cards, images */
+  --radius-pill: 999px; /* nav, CTAs */
+
+  /* ---- 02 Typography ---- */
+  /* Font family variables are set on <html> by next/font in app/layout.tsx
+     (--font-anton, --font-poppins, --font-space-mono); aliased here to the
+     semantic names used by source markup. */
+  --font-display: var(--font-anton), 'Anton', sans-serif; /* H1, hero statements, all caps */
+  --font-body: var(--font-poppins), 'Poppins', sans-serif; /* body copy, UI */
+  --font-mono: var(--font-space-mono), 'Space Mono', monospace; /* labels, tags, badges */
+
+  /* Reference scale from the Design System page. Individual sections use
+     clamp() with their own min/preferred/max — those are preserved as
+     written in each component, not standardized into a single utility. */
+  --text-h1-min: 56px;
+  --text-h1-max: 80px;
+  --text-h2-min: 32px;
+  --text-h2-max: 40px;
+  --text-h3-min: 22px;
+  --text-h3-max: 28px;
+  --text-body-min: 15px;
+  --text-body-max: 18px;
+  --text-label-min: 11px;
+  --text-label-max: 13px;
+  --text-price-min: 18px;
+  --text-price-max: 20px;
+}
+
+/* ---- Shared reset, transcribed from every page's <helmet><style> block ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--color-olive-800);
+  color: var(--color-cream-100);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--color-gold-500);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-cream-100);
+}
+
+::selection {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(21, 21, 15, 0.4);
+}
+
+/* Keyboard focus ring. :focus-visible only matches keyboard/AT focus, so
+   pointer and touch users never see it and the approved visuals are
+   unaffected; outline also draws outside the box, so nothing reflows. */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+}
+
+/* The default grey flash on tap looks broken over the dark palette. */
+@media (hover: none) {
+  a,
+  button,
+  label,
+  select,
+  summary {
+    -webkit-tap-highlight-color: rgba(183, 160, 107, 0.18);
+  }
+}
+
+/* iOS Safari zooms the page when a control under 16px is focused.
+   !important is needed to beat the component-level class rules. */
+@media (max-width: 600px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}

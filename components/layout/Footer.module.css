@@ -1,0 +1,227 @@
+.wrap {
+  background: var(--color-ink);
+  padding: clamp(56px, 7vw, 80px) 4vw 32px;
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.4fr) repeat(3, minmax(140px, 1fr));
+  gap: 40px;
+  padding-bottom: 48px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.tagline {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(244, 239, 227, 0.6);
+  max-width: 260px;
+  margin: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.socialLink {
+  display: block;
+}
+
+.socialIcon {
+  cursor: pointer;
+  display: block;
+}
+
+/* A <button> so the group can collapse on a phone. The reset below makes
+   it render as the plain block heading it replaced; the chevron is hidden
+   and the panel is always open above 600px, so it is inert on desktop. */
+.colHeading {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: default;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--color-gold-500);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.chevron,
+.chevronOpen {
+  display: none;
+}
+
+.colLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(244, 239, 227, 0.75);
+}
+
+.colLink {
+  color: rgba(244, 239, 227, 0.75);
+  cursor: pointer;
+}
+
+.colLink:hover {
+  color: var(--color-cream-100);
+}
+
+.storeLocatorLink {
+  color: rgba(244, 239, 227, 0.75);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.storeLocatorLink:hover {
+  color: var(--color-cream-100);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(244, 239, 227, 0.12);
+}
+
+.legal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(244, 239, 227, 0.45);
+  letter-spacing: 0.04em;
+}
+
+/* The desktop grid's column minimums add up to ~760px, so below that the
+   brand block takes its own row and the link columns share the next. */
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px 24px;
+    padding-bottom: 40px;
+  }
+
+  .columns > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Phone: the brand block sits on top, then the three link groups become
+   collapsible rows. Stacked-open they ran past 600px of near-identical
+   links; collapsed the whole footer is about a third of that, and every
+   row is a full-width 52px target. */
+@media (max-width: 600px) {
+  .wrap {
+    padding-top: clamp(40px, 11vw, 56px);
+  }
+
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding-bottom: 8px;
+  }
+
+  .columns > div:first-child {
+    padding-bottom: 24px;
+  }
+
+  .columns > div + div {
+    border-top: 1px solid rgba(244, 239, 227, 0.1);
+  }
+
+  .tagline {
+    max-width: 330px;
+  }
+
+  .socials {
+    gap: 6px;
+    margin-top: 20px;
+  }
+
+  .socialLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+  }
+
+  .colHeading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 52px;
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 12.5px;
+    letter-spacing: 0.09em;
+    color: var(--color-cream-100);
+  }
+
+  .chevron,
+  .chevronOpen {
+    display: block;
+    flex-shrink: 0;
+    color: var(--color-gold-500);
+    transition: transform 0.2s ease;
+  }
+
+  .chevronOpen {
+    transform: rotate(180deg);
+  }
+
+  .colLinks {
+    display: none;
+    gap: 0;
+  }
+
+  .colLinks[data-open="true"] {
+    display: flex;
+    padding-bottom: 10px;
+  }
+
+  .colLink,
+  .storeLocatorLink {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .legal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron,
+  .chevronOpen {
+    transition: none;
+  }
+}

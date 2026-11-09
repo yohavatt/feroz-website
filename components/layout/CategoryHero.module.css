@@ -1,0 +1,73 @@
+.hero {
+  position: relative;
+  height: clamp(320px, 42vw, 440px);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(21, 21, 15, 0.75) 0%,
+    rgba(21, 21, 15, 0.35) 45%,
+    rgba(21, 21, 15, 0.15) 100%
+  );
+}
+
+.content {
+  position: absolute;
+  left: 4vw;
+  bottom: 44px;
+  max-width: 560px;
+}
+
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--color-gold-500);
+  margin-bottom: 14px;
+}
+
+.breadcrumbHome {
+  color: var(--color-gold-500);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 68px);
+  margin: 0 0 16px;
+  line-height: 0.95;
+  color: var(--color-cream-100);
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(244, 239, 227, 0.85);
+  margin: 0;
+  max-width: 460px;
+}
+
+/* On phones the copy spans nearly the full width, reaching the lighter
+   right side of the page-specific gradient; a bottom shade underneath keeps
+   it legible without touching that gradient. */
+@media (max-width: 600px) {
+  .overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(21, 21, 15, 0.6) 0%, rgba(21, 21, 15, 0) 65%);
+  }
+
+  .content {
+    right: 4vw;
+    bottom: 32px;
+  }
+}

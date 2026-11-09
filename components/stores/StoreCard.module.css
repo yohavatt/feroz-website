@@ -1,0 +1,105 @@
+.card {
+  border-width: 2.5px;
+  border-style: solid;
+  border-radius: 20px;
+  padding: 22px 24px;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-cream-100);
+}
+
+.city {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-gold-500);
+  margin-top: 4px;
+}
+
+.distance {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(244, 239, 227, 0.55);
+  white-space: nowrap;
+}
+
+.address {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(244, 239, 227, 0.75);
+  margin-bottom: 8px;
+}
+
+.hours {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(244, 239, 227, 0.55);
+  margin-bottom: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.viewBtn {
+  background: transparent;
+  border: 1.5px solid var(--color-gold-500);
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--color-cream-100);
+  cursor: pointer;
+}
+
+.viewBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.directionsBtn {
+  background: var(--color-ink);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--color-cream-100);
+  cursor: pointer;
+}
+
+.directionsBtn:hover {
+  background: var(--color-olive-700);
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 20px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+  }
+
+  .viewBtn,
+  .directionsBtn {
+    padding: 12px 18px;
+  }
+}

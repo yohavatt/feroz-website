@@ -1,0 +1,135 @@
+.tile {
+  position: relative;
+  height: clamp(420px, 46vw, 560px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-olive-700);
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Resolved value of source's templated {{bgGradient}} — the two tiles that
+   hardcode this gradient literally (Men's Sale, Summer's Promotion) use
+   this exact same value, so all four tiles share one constant here. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    95deg,
+    rgba(21, 21, 15, 0.85) 0%,
+    rgba(21, 21, 15, 0.55) 42%,
+    rgba(21, 21, 15, 0.12) 100%
+  );
+}
+
+.badges {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.content {
+  position: absolute;
+  left: clamp(24px, 4vw, 56px);
+  bottom: clamp(32px, 4vw, 56px);
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--color-gold-500);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5vw, 62px);
+  margin: 0;
+  line-height: 0.95;
+  color: var(--color-cream-100);
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(244, 239, 227, 0.88);
+  margin: 0;
+  max-width: 400px;
+}
+
+/* Resolved value of source's templated {{accentColor}} (default gold) —
+   also what Men's Sale tile hardcodes literally for this same button. */
+.ctaFill,
+.ctaFade {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+  border-radius: var(--radius-pill);
+  padding: 15px 32px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+.ctaFill:hover {
+  background: var(--color-cream-100);
+  color: var(--color-ink);
+}
+
+.ctaFade:hover {
+  opacity: 0.9;
+}
+
+/* On a portrait phone tile the copy spans the full width at the bottom,
+   so the same ink shade runs bottom-to-top instead of left-to-right. */
+@media (max-width: 600px) {
+  .tile {
+    height: 480px;
+  }
+
+  .overlay {
+    background: linear-gradient(
+      0deg,
+      rgba(21, 21, 15, 0.9) 0%,
+      rgba(21, 21, 15, 0.62) 48%,
+      rgba(21, 21, 15, 0.15) 100%
+    );
+  }
+
+  .badges {
+    top: 18px;
+    left: 18px;
+    right: 18px;
+  }
+
+  .content {
+    left: 22px;
+    right: 22px;
+    bottom: 26px;
+    gap: 14px;
+  }
+
+  .ctaFill,
+  .ctaFade {
+    padding: 15px 28px;
+  }
+}

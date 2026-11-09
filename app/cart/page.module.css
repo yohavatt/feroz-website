@@ -1,0 +1,122 @@
+.titleSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 56px) 4vw 0;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 44px);
+  margin: 0 0 8px;
+  color: var(--color-cream-100);
+}
+
+.itemCount {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(244, 239, 227, 0.55);
+}
+
+/* Two columns on desktop; stacks below 900px (see the media query at the
+   end of this file) so the summary lands under the line items. */
+.contentGrid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 4vw clamp(64px, 9vw, 110px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr);
+  gap: clamp(32px, 5vw, 56px);
+  align-items: start;
+}
+
+.continueShoppingWrap {
+  padding-top: 20px;
+}
+
+.continueShopping {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  border-bottom: 1.5px solid var(--color-gold-500);
+  padding-bottom: 4px;
+  color: var(--color-cream-100);
+}
+
+.continueShopping:hover {
+  color: var(--color-gold-500);
+}
+
+.recommendedSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4vw clamp(64px, 9vw, 110px);
+}
+
+.recommendedHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.recommendedHeading {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.8vw, 32px);
+  margin: 0;
+  color: var(--color-cream-100);
+}
+
+.viewAll {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  border-bottom: 1.5px solid var(--color-gold-500);
+  padding-bottom: 4px;
+  color: var(--color-cream-100);
+}
+
+.viewAll:hover {
+  color: var(--color-gold-500);
+}
+
+.recommendedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contentGrid {
+    padding-top: 12px;
+  }
+
+  .continueShoppingWrap {
+    padding-top: 24px;
+  }
+
+  .recommendedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .viewAll,
+  .continueShopping {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}

@@ -1,0 +1,93 @@
+.card {
+  background: var(--color-olive-950);
+  border-radius: 20px;
+  padding: 24px 28px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.number {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-cream-100);
+}
+
+.date {
+  font-size: 12px;
+  color: rgba(244, 239, 227, 0.55);
+  margin-top: 4px;
+}
+
+.status {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.thumbs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.thumbWrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-olive-700);
+}
+
+.thumb {
+  object-fit: cover;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.total {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-cream-100);
+}
+
+.viewBtn {
+  background: transparent;
+  border: 1.5px solid var(--color-gold-500);
+  border-radius: var(--radius-pill);
+  padding: 9px 20px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--color-cream-100);
+  cursor: pointer;
+}
+
+.viewBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 22px;
+  }
+
+  .viewBtn {
+    padding: 11px 22px;
+  }
+}

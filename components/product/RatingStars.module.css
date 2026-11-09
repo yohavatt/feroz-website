@@ -1,0 +1,6 @@
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 6px;
+  color: var(--color-gold-500);
+}

@@ -1,0 +1,431 @@
+/* ---- Shared auth (Sign In / Create Account / Forgot Password) ---- */
+.authWrap {
+  margin: 0 auto;
+  padding: clamp(64px, 9vw, 100px) 4vw;
+}
+
+.authTitle {
+  font-family: var(--font-display);
+  margin: 0 0 8px;
+  color: var(--color-cream-100);
+  font-weight: 700;
+  text-align: center;
+}
+
+.authSubtitle {
+  font-size: 14px;
+  color: rgba(244, 239, 227, 0.6);
+  text-align: center;
+  margin: 0 0 36px;
+}
+
+.fieldStack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.forgotLinkRow {
+  text-align: right;
+  margin-top: -6px;
+}
+
+.forgotLink {
+  font-size: 13px;
+  color: var(--color-gold-500);
+}
+
+.submitBtn {
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 17px 0;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+.submitBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.switchViewRow {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 14px;
+  color: rgba(244, 239, 227, 0.65);
+}
+
+.switchViewLink {
+  color: var(--color-gold-500);
+  font-weight: 600;
+}
+
+.newToFeroz {
+  border-top: 1px solid rgba(244, 239, 227, 0.12);
+  margin-top: 36px;
+  padding-top: 28px;
+  text-align: center;
+}
+
+.newToFerozTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-cream-100);
+  margin-bottom: 8px;
+}
+
+.newToFerozBody {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(244, 239, 227, 0.6);
+  margin: 0 0 14px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.createAccountPill {
+  display: inline-block;
+  background: transparent;
+  border: 1.5px solid var(--color-gold-500);
+  border-radius: var(--radius-pill);
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--color-cream-100);
+}
+
+.createAccountPill:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.trustStrip {
+  text-align: center;
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(244, 239, 227, 0.5);
+}
+
+.sentBlock {
+  background: var(--color-olive-950);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(244, 239, 227, 0.85);
+  margin-bottom: 24px;
+}
+
+.sentEmail {
+  color: var(--color-cream-100);
+}
+
+.forgotResetBtn {
+  width: 100%;
+  background: var(--color-ink);
+  color: var(--color-cream-100);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 17px 0;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.forgotResetBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.backToSignin {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 14px;
+}
+
+.backToSigninLink {
+  color: var(--color-gold-500);
+  font-weight: 600;
+}
+
+/* ---- Dashboard ---- */
+.dashboardHeader {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 56px) 4vw 0;
+}
+
+.dashboardTitle {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 40px);
+  margin: 0 0 4px;
+  color: var(--color-cream-100);
+  font-weight: 700;
+}
+
+.welcomeBack {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: rgba(244, 239, 227, 0.55);
+}
+
+.dashboardGrid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 4vw clamp(64px, 9vw, 110px);
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: start;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--color-olive-950);
+  border-radius: 20px;
+  padding: 14px;
+}
+
+.sidebarBtn {
+  text-align: left;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+.sidebarDivider {
+  height: 1px;
+  background: rgba(244, 239, 227, 0.12);
+  margin: 8px 6px;
+}
+
+.logoutBtn {
+  text-align: left;
+  background: transparent;
+  color: rgba(244, 239, 227, 0.6);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+.logoutBtn:hover {
+  color: var(--color-cream-100);
+}
+
+/* ---- Orders panel ---- */
+.ordersPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---- Personal Info panel ---- */
+.infoPanel {
+  background: var(--color-olive-950);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 560px;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.infoLabel {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: rgba(244, 239, 227, 0.55);
+  margin-bottom: 8px;
+}
+
+.infoInput {
+  width: 100%;
+  background: var(--color-cream-100);
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  padding: 15px 18px;
+  font-size: 14px;
+  color: var(--color-ink);
+}
+
+.saveBtn {
+  background: var(--color-ink);
+  color: var(--color-cream-100);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 15px 36px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.saveBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.savedNote {
+  font-size: 12px;
+  color: var(--color-gold-500);
+  margin-top: 12px;
+}
+
+/* ---- Addresses panel ---- */
+.addressesPanel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 760px;
+}
+
+.addressCard {
+  background: var(--color-olive-950);
+  border-radius: 20px;
+  padding: 26px;
+}
+
+.addressLabel {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-500);
+  margin-bottom: 14px;
+}
+
+.addressBody {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(244, 239, 227, 0.85);
+  margin-bottom: 20px;
+}
+
+.editBtn {
+  background: transparent;
+  border: 1.5px solid var(--color-gold-500);
+  border-radius: var(--radius-pill);
+  padding: 9px 20px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--color-cream-100);
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.addAddressCard {
+  border: 1.5px dashed rgba(244, 239, 227, 0.3);
+  border-radius: 20px;
+  padding: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addAddressBtn {
+  background: transparent;
+  border: none;
+  color: var(--color-gold-500);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+/* The 220px sidebar leaves too little room beside it on narrow screens, so
+   the menu sits above the active panel instead. */
+@media (max-width: 900px) {
+  .dashboardGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .fieldGrid,
+  .infoGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .forgotLink {
+    display: inline-block;
+    padding: 6px 0;
+  }
+
+  .switchViewLink,
+  .backToSigninLink {
+    display: inline-block;
+    padding: 6px 0;
+  }
+
+  .createAccountPill {
+    padding: 12px 26px;
+  }
+
+  .infoPanel {
+    padding: 26px 22px;
+  }
+
+  .saveBtn {
+    width: 100%;
+  }
+
+  .addressCard,
+  .addAddressCard {
+    padding: 24px 22px;
+  }
+
+  .editBtn {
+    padding: 11px 22px;
+  }
+
+  .addAddressBtn {
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .forgotLink,
+  .switchViewLink,
+  .backToSigninLink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}

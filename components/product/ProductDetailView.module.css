@@ -1,0 +1,447 @@
+.breadcrumb {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 4vw 0;
+}
+
+.breadcrumbText {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(244, 239, 227, 0.55);
+}
+
+.breadcrumbLink {
+  color: rgba(244, 239, 227, 0.55);
+}
+
+.breadcrumbCurrent {
+  color: var(--color-gold-500);
+}
+
+/* Two columns on desktop and tablet; stacks at 720px and below (see the
+   media query at the end of this file), where the 300px info minimum would
+   crush the image. */
+.main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 4vw 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--color-gold-500);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.6vw, 42px);
+  line-height: 1.02;
+  margin: 0 0 14px;
+  color: var(--color-cream-100);
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.reviewCount {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(244, 239, 227, 0.55);
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(244, 239, 227, 0.8);
+  margin: 0 0 22px;
+  max-width: 440px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.price {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--color-cream-100);
+}
+
+.compareAt {
+  font-size: 16px;
+  color: rgba(244, 239, 227, 0.5);
+  text-decoration: line-through;
+}
+
+.discountBadge {
+  background: var(--color-rust-500);
+  color: var(--color-cream-100);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(244, 239, 227, 0.12);
+  margin-bottom: 26px;
+}
+
+.qtyAddRow {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.addToCart {
+  flex: 1;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0 32px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.addToCart:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+.sizeWarning {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-gold-500);
+  margin-bottom: 20px;
+}
+
+.featureStrip {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px solid rgba(244, 239, 227, 0.12);
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(244, 239, 227, 0.75);
+}
+
+.accordionSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(64px, 7vw, 96px) 4vw 0;
+}
+
+.accordionInner {
+  max-width: 820px;
+}
+
+.featuresSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(64px, 7vw, 96px) 4vw 0;
+}
+
+.featuresHeading {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.8vw, 32px);
+  margin: 0 0 32px;
+  color: var(--color-cream-100);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 28px;
+}
+
+.featureCard {
+  background: var(--color-olive-950);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+}
+
+.featureCardIcon {
+  margin-bottom: 16px;
+}
+
+.featureCardTitle {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-cream-100);
+  margin-bottom: 8px;
+}
+
+.featureCardDesc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(244, 239, 227, 0.65);
+}
+
+.relatedSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(64px, 7vw, 96px) 4vw clamp(64px, 9vw, 110px);
+}
+
+.relatedHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.relatedHeading {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.8vw, 32px);
+  margin: 0;
+  color: var(--color-cream-100);
+}
+
+.viewAll {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  border-bottom: 1.5px solid var(--color-gold-500);
+  padding-bottom: 4px;
+  color: var(--color-cream-100);
+}
+
+.viewAll:hover {
+  color: var(--color-gold-500);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+/* Below ~910px the info column is at its 300px minimum and the desktop
+   side padding would force the label onto two lines. */
+@media (max-width: 960px) {
+  .addToCart {
+    padding: 0 12px;
+  }
+}
+
+/* Stacked layout: gallery first, then the info column. Price is lifted
+   directly under the title (order below) so it is visible without
+   scrolling past the rating and description. Everything else keeps its
+   desktop sequence. */
+@media (max-width: 720px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding-top: 18px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info > * {
+    order: 10;
+  }
+
+  .category {
+    order: 1;
+  }
+
+  .title {
+    order: 2;
+  }
+
+  .priceRow {
+    order: 3;
+    margin-bottom: 14px;
+  }
+
+  .ratingRow {
+    order: 4;
+  }
+
+  .description {
+    order: 5;
+    max-width: none;
+  }
+
+  .divider {
+    order: 6;
+  }
+}
+
+@media (max-width: 600px) {
+  .breadcrumb {
+    padding-top: 20px;
+  }
+
+  /* The desktop row puts the stepper and a flex:1 button side by side; at
+     this width that leaves the label cramped, so the button takes its own
+     full-width row under a full-width stepper. */
+  .qtyAddRow {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .addToCart {
+    flex: 1 1 100%;
+    min-height: 54px;
+    padding: 0 24px;
+  }
+
+  .featureStrip {
+    gap: 10px 20px;
+  }
+
+  .featuresHeading {
+    margin-bottom: 24px;
+  }
+
+  .featuresGrid {
+    gap: 16px;
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 14px;
+  }
+}
+
+/* ---- Phone sticky buy bar ---- */
+.buyBar,
+.buyBarVisible,
+.buyBarSpacer {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .buyBar,
+  .buyBarVisible {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 55;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 4vw calc(10px + env(safe-area-inset-bottom));
+    background: rgba(21, 21, 15, 0.96);
+    border-top: 1px solid rgba(183, 160, 107, 0.28);
+    transition: transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity 160ms ease;
+  }
+
+  /* Kept in the DOM but pushed off-screen and inert, so showing it is a
+     single compositor-friendly transform rather than a remount. */
+  .buyBar {
+    transform: translateY(110%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .buyBarVisible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .buyBarInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .buyBarName {
+    font-size: 12px;
+    color: rgba(244, 239, 227, 0.72);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .buyBarPrice {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--color-cream-100);
+  }
+
+  .buyBarBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    flex: 1;
+    min-height: 50px;
+    margin-left: auto;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: var(--color-gold-500);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+
+  /* Sits below the footer so the bar never covers page content at the
+     document end; inherits the footer's fill so it reads as part of it. */
+  .buyBarSpacer {
+    display: block;
+    height: 74px;
+    background: var(--color-ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buyBar,
+  .buyBarVisible {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .viewAll {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}

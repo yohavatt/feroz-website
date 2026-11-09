@@ -1,0 +1,82 @@
+.wrap {
+  margin-bottom: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: var(--color-cream-100);
+}
+
+.required {
+  font-weight: 600;
+}
+
+.sizeGuide {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-gold-500);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.option,
+.optionSelected,
+.optionDisabled {
+  min-width: 52px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: var(--radius-sm);
+  border-width: 1.5px;
+  border-style: solid;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  position: relative;
+}
+
+.option {
+  border-color: rgba(244, 239, 227, 0.3);
+  background: transparent;
+  color: rgba(244, 239, 227, 0.8);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.option:hover {
+  border-color: #7d9160;
+}
+
+.optionSelected {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-cream-100);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.optionSelected:hover {
+  border-color: #7d9160;
+}
+
+.optionDisabled {
+  border-color: rgba(244, 239, 227, 0.15);
+  background: transparent;
+  color: rgba(244, 239, 227, 0.3);
+  cursor: not-allowed;
+  opacity: 0.45;
+}

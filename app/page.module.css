@@ -1,0 +1,622 @@
+/* ---- 2. Hero ---- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: clamp(500px, 88vh, 780px);
+  overflow: hidden;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(21, 21, 15, 0.55) 0%,
+    rgba(21, 21, 15, 0.22) 45%,
+    rgba(21, 21, 15, 0.05) 100%
+  );
+}
+
+/* Repositioned per approved adjustment: moved further right into the open
+   sky gap before the mountain range, so it never overlaps the mountain or
+   the climber. Anchored from the right edge (matching the page's 4vw
+   gutter) instead of left+fixed-width so it can never clip or overflow at
+   any viewport width. Size/opacity/asset unchanged — position only. */
+.heroOverlayLogo {
+  position: absolute;
+  top: -24px;
+  right: 2vw;
+  width: 147.5px;
+  height: 142.5px;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.heroHeadline {
+  position: absolute;
+  left: 6vw;
+  top: clamp(40px, 7vh, 86px);
+  max-width: 900px;
+}
+
+.heroFindYour {
+  font-family: "Agency FB", var(--font-body);
+  font-weight: 400;
+  /* 20% reduction from the approved clamp(34px, 4.8vw, 75px). */
+  font-size: clamp(27px, 3.84vw, 60px);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: var(--color-cream-100);
+  text-transform: uppercase;
+}
+
+.heroWild {
+  font-family: "Agency FB", var(--font-display);
+  font-weight: 700;
+  /* 20% reduction from the approved clamp(110px, 19vw, 300px). */
+  font-size: clamp(88px, 15.2vw, 240px);
+  line-height: 0.82;
+  letter-spacing: 0.02em;
+  color: var(--color-gold-500);
+  margin-top: clamp(10px, 1.6vw, 26px);
+}
+
+.heroTagline {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--color-cream-100);
+  text-transform: uppercase;
+  margin-top: 32px;
+  margin-left: 10px;
+}
+
+.heroCtaWrap {
+  position: absolute;
+  left: 6vw;
+  /* Lowered (reduced distance from the hero's bottom edge) to add more
+     vertical space between the tagline above and this button. Horizontal
+     position (left) is unchanged. */
+  bottom: clamp(24px, 3vw, 48px);
+  max-width: 640px;
+}
+
+.heroCta {
+  background: var(--color-ink);
+  color: var(--color-cream-100);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 16px 32px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.heroCta:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+/* ---- 3. Product category section ---- */
+.categorySection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(64px, 10vw, 120px) 4vw 40px;
+  text-align: center;
+}
+
+.categoryHeading {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 40px);
+  margin: 0;
+  color: var(--color-cream-100);
+}
+
+.categoryDivider {
+  width: 60px;
+  height: 2px;
+  background: var(--color-gold-500);
+  margin: 20px auto 56px;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 24px;
+}
+
+/* ---- 4. Featured products ---- */
+.featuredSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(64px, 10vw, 120px) 4vw 40px;
+}
+
+.featuredHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.featuredEyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--color-gold-500);
+  text-transform: uppercase;
+}
+
+.featuredHeading {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(28px, 3.5vw, 40px);
+  margin: 8px 0 0;
+  color: var(--color-cream-100);
+}
+
+.featuredViewAll {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  color: var(--color-cream-100);
+  border-bottom: 1.5px solid transparent;
+}
+
+.featuredViewAll:hover {
+  border-bottom: 1.5px solid var(--color-gold-500);
+  color: var(--color-gold-500);
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 28px;
+}
+
+/* ---- 5. Brand values ---- */
+.brandValues {
+  position: relative;
+  overflow: hidden;
+}
+
+.brandValuesBg {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.brandValuesOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(30, 36, 24, 0.85), rgba(24, 29, 19, 0.9));
+}
+
+.brandValuesInner {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(70px, 10vw, 130px) 4vw;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 1px minmax(320px, 1.3fr);
+  gap: 52px;
+  align-items: center;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 52px 36px;
+}
+
+.valueItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.valueLabel {
+  font-family: var(--font-mono);
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  color: var(--color-cream-100);
+}
+
+.valuesDivider {
+  align-self: stretch;
+  background: var(--color-gold-500);
+  opacity: 0.55;
+}
+
+.valuesCopy {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.95;
+  color: rgba(244, 239, 227, 0.85);
+}
+
+.valuesCopy p {
+  margin: 0 0 24px;
+}
+
+.valuesCopy p:last-child {
+  margin: 0;
+}
+
+/* ---- 6. Lifestyle imagery ---- */
+.lifestyle {
+  padding: clamp(48px, 8vw, 96px) 4vw;
+}
+
+.lifestyleInner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.lifestyleHeadingWrap {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.lifestyleHeading {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  margin: 0;
+  color: var(--color-cream-100);
+  letter-spacing: 0.01em;
+}
+
+.lifestyleImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1672 / 941;
+}
+
+.lifestyleImage {
+  object-fit: contain;
+}
+
+/* ---- 7. CTA / brand mission ---- */
+.cta {
+  position: relative;
+  padding: clamp(80px, 12vw, 140px) 4vw;
+  text-align: center;
+  background: var(--color-olive-950);
+  overflow: hidden;
+}
+
+.ctaStripes {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #232b1e,
+    #232b1e 40px,
+    #1e2418 40px,
+    #1e2418 80px
+  );
+  opacity: 0.5;
+}
+
+.ctaInner {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.ctaEyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--color-gold-500);
+  text-transform: uppercase;
+}
+
+.ctaHeading {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 58px);
+  margin: 20px 0 24px;
+  color: var(--color-cream-100);
+  line-height: 1.05;
+}
+
+.ctaCopy {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(244, 239, 227, 0.75);
+  margin: 0 0 36px;
+}
+
+.ctaButton {
+  display: inline-block;
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+  border-radius: var(--radius-pill);
+  padding: 17px 40px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+/* Dissolve: the gold fill fades out into the dark section behind it while
+   the label lifts to cream so it stays readable. No movement/scale. */
+.ctaButton:hover {
+  background-color: transparent;
+  color: var(--color-cream-100);
+}
+
+/* ---- 8. Newsletter ---- */
+.newsletter {
+  padding: clamp(64px, 9vw, 110px) 4vw;
+  text-align: center;
+}
+
+.newsletterInner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.newsletterHeading {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 0 0 12px;
+  color: var(--color-cream-100);
+}
+
+.newsletterCopy {
+  font-size: 14px;
+  color: rgba(244, 239, 227, 0.7);
+  margin: 0 0 32px;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 0;
+  background: var(--color-cream-100);
+  border-radius: var(--radius-pill);
+  padding: 6px 6px 6px 24px;
+  align-items: center;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.newsletterInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-ink);
+  outline: none;
+}
+
+.newsletterSubmit {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-ink);
+  border: none;
+  color: var(--color-cream-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.newsletterSubmit:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+/* The brand-values grid needs ~685px across its three tracks; below that it
+   stacks, and the vertical gold rule becomes a horizontal one. */
+@media (max-width: 900px) {
+  .brandValuesInner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 44px;
+  }
+
+  .valuesDivider {
+    align-self: auto;
+    height: 1px;
+  }
+}
+
+/* ============================================================
+   Phone/tablet hero. The desktop hero anchors the headline to the
+   top and pins the CTA to the bottom edge; at 88vh on a phone that
+   pushed SHOP NOW below the fold and left a dead band of image
+   between the two. Here the whole stack sits bottom-left as one
+   editorial block, and the hero is short enough that all of it —
+   including the CTA — lands above the fold on a 844px screen.
+   ============================================================ */
+@media (max-width: 720px) {
+  .hero {
+    height: min(78vh, 680px);
+    /* Small-viewport unit: excludes the browser chrome that vh ignores. */
+    height: min(78svh, 680px);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 6vw clamp(28px, 7vw, 44px);
+  }
+
+  /* Portrait crop keeps the climber and the ridge line in frame. */
+  .heroImage {
+    object-position: 60% 38%;
+  }
+
+  /* The desktop gradient runs left-to-right and leaves the bottom of a
+     portrait frame too light for cream text sitting on it. */
+  .heroOverlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(21, 21, 15, 0.74) 0%,
+      rgba(21, 21, 15, 0.26) 44%,
+      rgba(21, 21, 15, 0) 72%
+    );
+  }
+
+  /* Smaller and tucked into the top corner so it clears the headline,
+     which on a narrow screen now reaches much further right. */
+  .heroOverlayLogo {
+    top: 8px;
+    right: 4vw;
+    width: 92px;
+    height: 89px;
+  }
+
+  /* relative, not static: the image and the overlay are absolutely
+     positioned siblings, so in-flow children need a position and a
+     z-index to keep painting above them. */
+  .heroHeadline,
+  .heroCtaWrap {
+    position: relative;
+    z-index: 2;
+    inset: auto;
+    max-width: none;
+  }
+
+  .heroFindYour {
+    font-size: clamp(21px, 6.2vw, 30px);
+    letter-spacing: 0.14em;
+  }
+
+  .heroWild {
+    font-size: clamp(72px, 24vw, 108px);
+    margin-top: 4px;
+  }
+
+  .heroTagline {
+    margin-top: 16px;
+    margin-left: 2px;
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+  }
+
+  .heroCtaWrap {
+    margin-top: 24px;
+  }
+
+  /* Against the bottom scrim the ink pill loses its edge, so a hairline
+     gold border defines it without changing the approved fill. */
+  .heroCta {
+    min-height: 54px;
+    padding: 0 30px;
+    border: 1.5px solid rgba(183, 160, 107, 0.55);
+  }
+}
+
+@media (max-width: 600px) {
+  .categorySection {
+    padding-bottom: 24px;
+  }
+
+  .categoryDivider {
+    margin-bottom: 28px;
+  }
+
+  /* Editorial mosaic: two up, with the fifth category running full width
+     as a wide banner so the row never ends on a lone half-width card. */
+  .categoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .categoryGrid > *:last-child {
+    grid-column: 1 / -1;
+    --cat-card-aspect: 16 / 9;
+  }
+
+  .featuredSection {
+    padding-top: clamp(56px, 12vw, 72px);
+  }
+
+  .featuredHeader {
+    margin-bottom: 26px;
+  }
+
+  .featuredGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 14px;
+  }
+
+  .valuesGrid {
+    gap: 36px 20px;
+  }
+
+  .valuesCopy {
+    font-size: 13.5px;
+    line-height: 1.85;
+  }
+
+  .valuesCopy p {
+    margin-bottom: 18px;
+  }
+
+  .lifestyleHeadingWrap {
+    margin-bottom: 28px;
+  }
+
+  .ctaCopy {
+    font-size: 15px;
+  }
+
+  .ctaButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 0 32px;
+  }
+
+  /* Taller pill so the field and the submit button both clear 44px. */
+  .newsletterForm {
+    padding: 7px 7px 7px 22px;
+  }
+
+  .newsletterSubmit {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+/* Touch-target pass: these controls were under 44px tall on a phone
+   because their padding lives on a wrapper, not on the control itself. */
+@media (max-width: 600px) {
+  .featuredViewAll {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .newsletterInput {
+    min-height: 44px;
+  }
+}

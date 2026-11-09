@@ -1,0 +1,83 @@
+.card {
+  display: block;
+  cursor: pointer;
+  color: var(--color-cream-100);
+}
+
+.imageWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 260px;
+}
+
+.image {
+  object-fit: cover;
+  object-position: var(--card-image-position, 50% 50%);
+  transition: transform 0.5s;
+}
+
+.card:hover .image {
+  transform: scale(1.07);
+}
+
+.label {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.icon {
+  display: block;
+}
+
+/* On a phone the desktop treatment (fixed 260px image + caption beneath)
+   turned five categories into a long column of near-identical blocks. The
+   label moves onto the image over a scrim, which keeps the photography at
+   full bleed and roughly halves the section's height. --cat-card-aspect
+   lets the consuming grid widen a single card (Home's fifth banner). */
+@media (max-width: 600px) {
+  .card {
+    position: relative;
+  }
+
+  .imageWrap {
+    height: auto;
+    aspect-ratio: var(--cat-card-aspect, 4 / 5);
+  }
+
+  .imageWrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(21, 21, 15, 0.8) 0%,
+      rgba(21, 21, 15, 0.22) 46%,
+      rgba(21, 21, 15, 0) 72%
+    );
+  }
+
+  .label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 0;
+    padding: 0 13px 13px;
+    justify-content: flex-start;
+    gap: 7px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+
+  .icon {
+    width: 17px;
+    height: 17px;
+  }
+}

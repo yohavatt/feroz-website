@@ -1,0 +1,8 @@
+.collections {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 64px) 4vw clamp(64px, 9vw, 110px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3.5vw, 44px);
+}

@@ -1,0 +1,164 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(21, 21, 15, 0.7);
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal {
+  background: var(--color-olive-950);
+  border-radius: 24px;
+  padding: 36px;
+  max-width: 440px;
+  width: 100%;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: rgba(244, 239, 227, 0.6);
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  color: var(--color-cream-100);
+}
+
+.city {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--color-gold-500);
+  margin-bottom: 10px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  margin: 0 0 18px;
+  color: var(--color-cream-100);
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 14px;
+  color: rgba(244, 239, 227, 0.85);
+  margin-bottom: 22px;
+}
+
+.infoRow {
+  display: flex;
+  gap: 10px;
+}
+
+.infoIcon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.categoriesLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(244, 239, 227, 0.55);
+  margin-bottom: 10px;
+}
+
+.categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.categoryPill {
+  background: var(--color-ink);
+  border-radius: var(--radius-pill);
+  padding: 7px 16px;
+  font-size: 12px;
+  color: var(--color-cream-100);
+}
+
+.directionsBtn {
+  width: 100%;
+  background: var(--color-ink);
+  color: var(--color-cream-100);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 15px 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.directionsBtn:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+/* Phone: a centred dialog floating in a 16px gutter wastes the narrow
+   screen and sits away from the thumb, so it becomes a bottom sheet —
+   full width, rounded at the top, rising from the edge it is dismissed
+   toward. Content still scrolls inside it on short screens. */
+@media (max-width: 600px) {
+  .backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal {
+    max-width: none;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: 26px 22px calc(24px + env(safe-area-inset-bottom));
+    max-height: 88vh;
+    max-height: 88dvh;
+    overflow-y: auto;
+    animation: storeSheetIn 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .closeBtn {
+    top: 14px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+  }
+
+  .name {
+    padding-right: 44px;
+  }
+
+  .categoryPill {
+    padding: 9px 16px;
+  }
+
+  .directionsBtn {
+    min-height: 52px;
+  }
+}
+
+@keyframes storeSheetIn {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal {
+    animation: none;
+  }
+}

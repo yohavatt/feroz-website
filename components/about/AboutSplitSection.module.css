@@ -1,0 +1,122 @@
+.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: stretch;
+}
+
+.photoPanel {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  min-height: clamp(360px, 42vw, 540px);
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.textPanel {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  min-height: clamp(360px, 42vw, 540px);
+}
+
+.bg {
+  object-fit: cover;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(21, 21, 15, 0.35);
+}
+
+.content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px, 5vw, 64px);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--color-gold-500);
+  margin-bottom: 18px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  line-height: 1.05;
+  margin: 0 0 22px;
+  color: var(--color-cream-100);
+  font-weight: 700;
+}
+
+.body {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(244, 239, 227, 0.85);
+  margin: 0;
+  max-width: 440px;
+}
+
+.tags {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--color-cream-100);
+  border-top: 1px solid rgba(244, 239, 227, 0.3);
+  padding-top: 10px;
+}
+
+/* Stacked: the photo always leads its text panel, so the left/right
+   alternation (which has no meaning in one column) becomes a consistent
+   photo → story rhythm. Section order itself is unchanged. */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .photoPanel {
+    order: -1;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    max-height: 480px;
+  }
+
+  .textPanel {
+    min-height: 0;
+  }
+
+  .content {
+    padding: 40px 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 36px 24px;
+  }
+
+  .tags {
+    gap: 12px 24px;
+  }
+}

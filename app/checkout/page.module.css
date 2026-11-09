@@ -1,0 +1,312 @@
+/* ---- Minimal checkout-only nav (not the shared pill Nav) ---- */
+.navWrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-olive-950);
+  padding: 16px 4vw;
+}
+
+.navPill {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: var(--color-ink);
+  border-radius: var(--radius-pill);
+  padding: 10px 28px;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--color-cream-100);
+}
+
+.secureLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(244, 239, 227, 0.6);
+}
+
+/* ---- Confirmation ---- */
+.confirmation {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(72px, 10vw, 120px) 4vw clamp(90px, 10vw, 120px);
+  text-align: center;
+}
+
+.confirmIcon {
+  margin-bottom: 22px;
+}
+
+.orderNumber {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--color-gold-500);
+  margin-bottom: 14px;
+}
+
+.confirmTitle {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 42px);
+  margin: 0 0 16px;
+  color: var(--color-cream-100);
+}
+
+.confirmText {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(244, 239, 227, 0.75);
+  margin: 0 0 8px;
+}
+
+.confirmDelivery {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(244, 239, 227, 0.6);
+  margin: 0 0 40px;
+}
+
+.confirmCard {
+  background: var(--color-olive-950);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.confirmItem {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(244, 239, 227, 0.1);
+}
+
+.confirmThumb {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--color-olive-700);
+  flex-shrink: 0;
+}
+
+.confirmItemInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.confirmItemName {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-cream-100);
+}
+
+.confirmItemQty {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(244, 239, 227, 0.5);
+}
+
+.confirmItemTotal {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-cream-100);
+}
+
+.confirmTotalPaid {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 16px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-cream-100);
+}
+
+.continueShopping {
+  display: inline-block;
+  background: var(--color-ink);
+  color: var(--color-cream-100);
+  border-radius: var(--radius-pill);
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.continueShopping:hover {
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+}
+
+/* ---- Checkout form ---- */
+.titleSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(36px, 5vw, 48px) 4vw 0;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 38px);
+  margin: 0;
+  color: var(--color-cream-100);
+}
+
+/* Two columns on desktop; stacks below 900px (see the media query at the
+   end of this file) so the summary and Place Order follow the form. */
+.contentGrid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 4vw clamp(64px, 9vw, 110px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+  gap: clamp(32px, 5vw, 56px);
+  align-items: start;
+}
+
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stepNumber {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin: 0;
+  color: var(--color-cream-100);
+}
+
+.mockBadge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(244, 239, 227, 0.45);
+  border: 1px solid rgba(244, 239, 227, 0.25);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.deliveryOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---- Minimal checkout-only footer (not the shared Footer) ---- */
+.footer {
+  background: var(--color-ink);
+  padding: 32px 4vw;
+}
+
+.footerInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(244, 239, 227, 0.45);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navWrap {
+    padding: 10px 4vw;
+  }
+
+  .navPill {
+    padding: 12px 22px;
+  }
+
+  .contentGrid {
+    padding-top: 22px;
+  }
+
+  .formColumn {
+    gap: 36px;
+  }
+
+  .stepHeader {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .fieldGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  /* The payment grid's empty spacer cell only exists for the desktop
+     two-column alignment. */
+  .fieldGrid > div:empty {
+    display: none;
+  }
+
+  .confirmCard {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
