@@ -1,0 +1,76 @@
+/* Sits directly on top of the footer; its last layer is the footer's ink,
+   so page background -> ridges -> footer reads as one landscape. */
+/* Height follows the artwork's 1440:220 ratio (15.28vw) so peaks are never
+   clipped; below ~590px it holds 90px and the sides crop instead. The -1px
+   bottom margin overlaps the footer so no hairline shows between them. */
+.horizon,
+.tall {
+  position: relative;
+  height: clamp(90px, 15.28vw, 300px);
+  margin: clamp(24px, 4vw, 56px) 0 -1px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tall {
+  height: clamp(130px, 20vw, 380px);
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.far {
+  fill: var(--color-olive-500);
+  fill-opacity: 0.3;
+}
+
+.mid {
+  fill: var(--color-forest-800);
+  fill-opacity: 0.78;
+}
+
+.near {
+  fill: var(--color-ink);
+}
+
+/* Very slow depth: the far ridge rises a few pixels as the horizon scrolls
+   into view. Scroll-driven CSS (no JS), only where supported, never under
+   reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .far {
+      animation: ridgeRise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 60%;
+    }
+
+    .mid {
+      animation: ridgeRiseMid linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 60%;
+    }
+  }
+}
+
+@keyframes ridgeRise {
+  from {
+    transform: translateY(18px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ridgeRiseMid {
+  from {
+    transform: translateY(8px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { RidgeHorizon } from "./RidgeHorizon";
 import styles from "./Footer.module.css";
 
 // Reproduces FEROZ Home.dc.html's footer exactly, including its two
@@ -38,9 +39,12 @@ export interface FooterProps {
    *  in the Company column as a real link rather than the plain span every
    *  other page uses. Defaults to false so every existing page is unchanged. */
   aboutUsAsLink?: boolean;
+  /** Mountain horizon above the footer. "tall" is the About page's stronger
+   *  landscape; every other page uses the default. */
+  horizon?: "default" | "tall";
 }
 
-export function Footer({ aboutUsAsLink = false }: FooterProps = {}) {
+export function Footer({ aboutUsAsLink = false, horizon = "default" }: FooterProps = {}) {
   const [openGroup, setOpenGroup] = useState<GroupKey | null>(null);
 
   const toggle = (key: GroupKey) =>
@@ -74,101 +78,104 @@ export function Footer({ aboutUsAsLink = false }: FooterProps = {}) {
   }
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.inner}>
-        <div className={styles.columns}>
-          <div>
-            <img src="/assets/logo-white.png" alt="FEROZ" className={styles.logo} />
-            <p className={styles.tagline}>
-              Premium gear for hiking, exploration and survival. Solid gear,
-              tested in nature.
-            </p>
-            <div className={styles.socials}>
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label={s.label}
-                >
-                  <img src={s.icon} alt="" width={36} height={36} className={styles.socialIcon} />
-                </a>
-              ))}
+    <>
+      <RidgeHorizon size={horizon} />
+      <div className={styles.wrap}>
+        <div className={styles.inner}>
+          <div className={styles.columns}>
+            <div>
+              <img src="/assets/logo-white.png" alt="FEROZ" className={styles.logo} />
+              <p className={styles.tagline}>
+                Premium gear for hiking, exploration and survival. Solid gear,
+                tested in nature.
+              </p>
+              <div className={styles.socials}>
+                {socialLinks.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.socialLink}
+                    aria-label={s.label}
+                  >
+                    <img src={s.icon} alt="" width={36} height={36} className={styles.socialIcon} />
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div>
-            {groupHeading("shop", "Shop")}
-            <div
-              id="footer-group-shop"
-              className={styles.colLinks}
-              data-open={openGroup === "shop"}
-            >
-              {shopLinks.map((l) => (
-                <Link key={l.href} href={l.href} className={styles.colLink}>
-                  {l.label}
+            <div>
+              {groupHeading("shop", "Shop")}
+              <div
+                id="footer-group-shop"
+                className={styles.colLinks}
+                data-open={openGroup === "shop"}
+              >
+                {shopLinks.map((l) => (
+                  <Link key={l.href} href={l.href} className={styles.colLink}>
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              {groupHeading("support", "Support")}
+              <div
+                id="footer-group-support"
+                className={styles.colLinks}
+                data-open={openGroup === "support"}
+              >
+                {/* Source always points this at Home's newsletter section
+                    regardless of which page it's rendered on ("./FEROZ
+                    Home.dc.html#newsletter" everywhere) — "/#newsletter"
+                    reproduces that; a bare "#newsletter" would only work
+                    correctly on the Home page itself. */}
+                <Link href="/#newsletter" className={styles.colLink}>
+                  Contact
                 </Link>
-              ))}
+                <span className={styles.colLink}>Shipping</span>
+                <span className={styles.colLink}>Returns</span>
+              </div>
             </div>
-          </div>
 
-          <div>
-            {groupHeading("support", "Support")}
-            <div
-              id="footer-group-support"
-              className={styles.colLinks}
-              data-open={openGroup === "support"}
-            >
-              {/* Source always points this at Home's newsletter section
-                  regardless of which page it's rendered on ("./FEROZ
-                  Home.dc.html#newsletter" everywhere) — "/#newsletter"
-                  reproduces that; a bare "#newsletter" would only work
-                  correctly on the Home page itself. */}
-              <Link href="/#newsletter" className={styles.colLink}>
-                Contact
-              </Link>
-              <span className={styles.colLink}>Shipping</span>
-              <span className={styles.colLink}>Returns</span>
-            </div>
-          </div>
-
-          <div>
-            {groupHeading("company", "Company")}
-            <div
-              id="footer-group-company"
-              className={styles.colLinks}
-              data-open={openGroup === "company"}
-            >
-              {aboutUsAsLink ? (
+            <div>
+              {groupHeading("company", "Company")}
+              <div
+                id="footer-group-company"
+                className={styles.colLinks}
+                data-open={openGroup === "company"}
+              >
+                {aboutUsAsLink ? (
+                  <Link href="/about" className={styles.colLink}>
+                    About Us
+                  </Link>
+                ) : (
+                  <span className={styles.colLink}>About Us</span>
+                )}
+                <Link href="/stores" className={styles.storeLocatorLink}>
+                  Store Locator
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" />
+                    <circle cx="12" cy="9" r="2.3" />
+                  </svg>
+                </Link>
                 <Link href="/about" className={styles.colLink}>
-                  About Us
+                  Careers
                 </Link>
-              ) : (
-                <span className={styles.colLink}>About Us</span>
-              )}
-              <Link href="/stores" className={styles.storeLocatorLink}>
-                Store Locator
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                  <path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" />
-                  <circle cx="12" cy="9" r="2.3" />
-                </svg>
-              </Link>
-              <Link href="/about" className={styles.colLink}>
-                Careers
-              </Link>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className={styles.divider} />
+          <div className={styles.divider} />
 
-        <div className={styles.legal}>
-          <span>© 2026 FEROZ. All rights reserved.</span>
-          <span>HUNT YOUR LIMITS</span>
+          <div className={styles.legal}>
+            <span>© 2026 FEROZ. All rights reserved.</span>
+            <span>HUNT YOUR LIMITS</span>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

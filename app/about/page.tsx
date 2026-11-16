@@ -61,7 +61,7 @@ export default function AboutPage() {
         bottomPadding="clamp(80px, 9vw, 120px)"
       />
 
-      <Footer aboutUsAsLink />
+      <Footer aboutUsAsLink horizon="tall" />
     </>
   );
 }

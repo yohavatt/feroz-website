@@ -30,6 +30,15 @@
      Olive progression (darker than Olive 600, lighter than Olive 800). */
   --color-olive-700: #3e4a30;
 
+  /* Forest extension of the olive palette, for the site-wide atmospheric
+     background and the mountain accents. Adapted from the art direction's
+     forest/pine/olive/sage references and pulled toward the existing olives
+     so they sit in the same family (less blue, less saturated). */
+  --color-forest-900: #1f2d22; /* deep forest — edges and shadowed areas */
+  --color-forest-800: #26372a; /* dark pine — mid ridge, transitions */
+  --color-olive-500: #526b45; /* natural olive — far ridges, glows */
+  --color-sage-400: #829477; /* muted sage — contour lines, soft light */
+
   /* ---- 03 Spacing scale ---- */
   --space-xs: 4px; /* icon gaps, tight inline spacing */
   --space-sm: 8px; /* badge padding, chip gaps */
@@ -89,6 +98,55 @@ body {
   color: var(--color-cream-100);
   font-family: var(--font-body);
   overflow-x: hidden;
+}
+
+/* ---- Site-wide atmosphere ----
+   Two fixed, purely decorative layers behind all content (z-index -1 puts
+   them above the canvas colour, below every page element):
+     ::before  forest-green gradient — deep forest at the edges, olive in
+               the middle, a soft sage light from the upper right.
+     ::after   topographic contour lines at very low opacity, masked so they
+               only appear toward two corners, never as a full-page pattern.
+   Sections and cards with their own background (product imagery, cards,
+   footer, heroes) cover them, so product surfaces are unchanged. Static:
+   fixed layers are composited once, nothing repaints while scrolling. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  background:
+    radial-gradient(70% 55% at 88% -8%, rgba(130, 148, 119, 0.24), transparent 70%),
+    radial-gradient(60% 45% at 8% 4%, rgba(38, 55, 42, 0.85), transparent 72%),
+    radial-gradient(75% 55% at 4% 104%, rgba(31, 45, 34, 0.9), transparent 70%),
+    radial-gradient(55% 40% at 96% 96%, rgba(82, 107, 69, 0.26), transparent 72%),
+    linear-gradient(180deg, #2b3a28 0%, var(--color-olive-800) 38%, #303f2b 68%, #2a3826 100%);
+}
+
+body::after {
+  background:
+    url("/assets/topo-contours.svg") right -140px top -60px / 980px auto no-repeat,
+    url("/assets/topo-contours.svg") left -260px bottom -220px / 900px auto no-repeat;
+  opacity: 0.16;
+  -webkit-mask-image:
+    radial-gradient(55% 60% at 100% 0%, #000 20%, transparent 100%),
+    radial-gradient(52% 58% at 0% 100%, #000 20%, transparent 100%);
+  mask-image:
+    radial-gradient(55% 60% at 100% 0%, #000 20%, transparent 100%),
+    radial-gradient(52% 58% at 0% 100%, #000 20%, transparent 100%);
+}
+
+/* Phones: lighter texture, smaller contours — the gradient carries it. */
+@media (max-width: 600px) {
+  body::after {
+    background-size: 560px auto, 520px auto;
+    opacity: 0.1;
+  }
 }
 
 a {
