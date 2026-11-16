@@ -119,13 +119,18 @@ body::after {
   pointer-events: none;
 }
 
+/* Stronger pass (user feedback: too discreet): deeper forest corners, a
+   brighter sage light upper right, an olive glow across the middle-right and
+   a base that travels forest -> olive -> forest instead of staying olive. The
+   lightest point keeps cream text at >= 6:1 contrast (WCAG AA is 4.5:1). */
 body::before {
   background:
-    radial-gradient(70% 55% at 88% -8%, rgba(130, 148, 119, 0.24), transparent 70%),
-    radial-gradient(60% 45% at 8% 4%, rgba(38, 55, 42, 0.85), transparent 72%),
-    radial-gradient(75% 55% at 4% 104%, rgba(31, 45, 34, 0.9), transparent 70%),
-    radial-gradient(55% 40% at 96% 96%, rgba(82, 107, 69, 0.26), transparent 72%),
-    linear-gradient(180deg, #2b3a28 0%, var(--color-olive-800) 38%, #303f2b 68%, #2a3826 100%);
+    radial-gradient(85% 68% at 92% -12%, rgba(150, 166, 134, 0.5), transparent 70%),
+    radial-gradient(60% 50% at 76% 50%, rgba(90, 117, 74, 0.36), transparent 72%),
+    radial-gradient(72% 58% at 4% 0%, rgb(24, 37, 27), transparent 72%),
+    radial-gradient(90% 62% at 0% 106%, rgb(21, 33, 24), transparent 70%),
+    radial-gradient(62% 48% at 100% 100%, rgba(90, 117, 74, 0.5), transparent 72%),
+    linear-gradient(180deg, #223326 0%, #2f402c 30%, #3a4c33 56%, #1f2d21 100%);
 }
 
 body::after {
