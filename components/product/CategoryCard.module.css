@@ -81,3 +81,157 @@
     height: 17px;
   }
 }
+
+/* ============================================================
+   variant="slide" — Home's category carousel card. Large portrait
+   photo, the category's icon in a ring and its label set on the
+   photo over a bottom scrim; an arrow chip slides in on hover.
+   ============================================================ */
+.slideCard {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: var(--color-cream-100);
+  isolation: isolate;
+}
+
+.slideCard:hover {
+  color: var(--color-cream-100);
+}
+
+.slideImageWrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--color-olive-700);
+}
+
+.slideImage {
+  object-fit: cover;
+  object-position: var(--card-image-position, 50% 50%);
+  transition: transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.slideImageWrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(21, 21, 15, 0.86) 0%,
+    rgba(21, 21, 15, 0.35) 34%,
+    rgba(21, 21, 15, 0) 60%
+  );
+  transition: opacity 400ms ease;
+}
+
+.slideCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: clamp(18px, 2vw, 28px);
+}
+
+.slideIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(183, 160, 107, 0.65);
+  background: rgba(21, 21, 15, 0.45);
+  backdrop-filter: blur(6px);
+}
+
+.slideIcon img {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+.slideLabel {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.4vw, 36px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.slideArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--color-gold-500);
+  color: var(--color-ink);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 300ms ease, transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .slideCard:hover .slideImage {
+    transform: scale(1.06);
+  }
+
+  .slideCard:hover .slideArrow,
+  .slideCard:focus-visible .slideArrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Touch screens have no hover: keep the arrow visible as an affordance. */
+@media (hover: none) {
+  .slideArrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.slideCard:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: -2px;
+}
+
+@media (max-width: 600px) {
+  .slideIcon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .slideIcon img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .slideLabel {
+    font-size: 26px;
+  }
+
+  .slideArrow {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slideImage,
+  .slideArrow {
+    transition: none;
+  }
+
+  .slideCard:hover .slideImage {
+    transform: none;
+  }
+}

@@ -139,3 +139,164 @@
     row-gap: 2px;
   }
 }
+
+/* ============================================================
+   variant="featured" — Home's Featured Products only. Scoped under
+   .featured so the default card used by every other page is
+   unchanged.
+   ============================================================ */
+.featured {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured .imageWrap {
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  background: radial-gradient(120% 90% at 50% 20%, #46543a 0%, var(--color-olive-700) 55%, #34402a 100%);
+  box-shadow: 0 0 0 1px rgba(244, 239, 227, 0.06) inset;
+  transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 420ms ease;
+}
+
+.featured .image {
+  transition: transform 800ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.featured .imageWrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(21, 21, 15, 0.28) 0%, rgba(21, 21, 15, 0) 26%);
+}
+
+.featured .badge {
+  z-index: 1;
+  top: 16px;
+  left: 16px;
+  padding: 6px 12px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  box-shadow: 0 4px 14px -6px rgba(0, 0, 0, 0.5);
+}
+
+.featured .wishlistBtn {
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  width: 42px;
+  height: 42px;
+  background: rgba(21, 21, 15, 0.42);
+  border: 1px solid rgba(244, 239, 227, 0.18);
+  backdrop-filter: blur(6px);
+  transition: background-color 200ms ease, color 200ms ease, opacity 250ms ease, transform 250ms ease;
+}
+
+.featured .info {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 2px 0;
+}
+
+.featured .name {
+  margin-top: 8px;
+  font-size: 16.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.005em;
+  transition: color 200ms ease;
+}
+
+.featured .name:hover {
+  color: var(--color-gold-500);
+}
+
+.featured .priceRow {
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.featured .price {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.featured .compareAt {
+  font-size: 14px;
+}
+
+@media (hover: hover) {
+  .featured:hover .imageWrap {
+    transform: translateY(-4px);
+    box-shadow:
+      0 0 0 1px rgba(183, 160, 107, 0.35) inset,
+      0 22px 40px -22px rgba(0, 0, 0, 0.65);
+  }
+
+  .featured:hover .image {
+    transform: scale(calc(var(--card-image-scale, 1) * 1.05));
+  }
+
+  /* Wishlist appears with the card; it stays reachable by keyboard. */
+  .featured .wishlistBtn {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  .featured:hover .wishlistBtn,
+  .featured .wishlistBtn:focus-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .featured .imageWrap {
+    border-radius: 16px;
+  }
+
+  .featured .badge {
+    top: 10px;
+    left: 10px;
+    padding: 5px 9px;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+  }
+
+  .featured .wishlistBtn {
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .featured .info {
+    padding-top: 12px;
+  }
+
+  .featured .name {
+    font-size: 14.5px;
+  }
+
+  .featured .price {
+    font-size: 16.5px;
+  }
+
+  .featured .compareAt {
+    font-size: 12.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured .imageWrap,
+  .featured .image,
+  .featured .wishlistBtn {
+    transition: none;
+  }
+
+  .featured:hover .imageWrap {
+    transform: none;
+  }
+}

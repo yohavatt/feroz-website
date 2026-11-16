@@ -1,65 +1,125 @@
+/* Total height stays under 100px: Cart's order summary sticks at top:100px
+   and must keep clearing the nav. */
 .wrap {
   position: sticky;
   top: 0;
   z-index: 50;
   background: var(--color-olive-950);
-  padding: 16px 4vw;
+  padding: 14px 4vw;
 }
 
+/* Three tracks: brand | links (spread across all remaining space) | actions.
+   The middle track is minmax(0, 1fr) so the links shrink their gaps instead
+   of wrapping onto a second row at narrow desktop widths. */
 .pill {
   max-width: 1400px;
+  min-height: 68px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: clamp(18px, 3vw, 48px);
+  background: var(--color-ink);
+  border: 1px solid rgba(183, 160, 107, 0.16);
+  border-radius: var(--radius-pill);
+  padding: 0 clamp(14px, 2vw, 22px) 0 clamp(12px, 1.4vw, 16px);
+}
+
+.brand {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  background: var(--color-ink);
+  justify-content: center;
+  width: 58px;
+  height: 58px;
   border-radius: var(--radius-pill);
-  padding: 10px 28px;
-  flex-wrap: wrap;
+}
+
+/* Same square mark as the phone bar, at a size where the wordmark reads. */
+.brandLogo {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
 }
 
 .links {
   display: flex;
-  gap: clamp(16px, 3vw, 32px);
+  align-items: center;
+  justify-content: space-evenly;
+  gap: clamp(10px, 2vw, 28px);
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.01em;
-  flex-wrap: wrap;
+  font-size: 13.5px;
+  letter-spacing: 0.08em;
+}
+
+/* Gold rule drawn from the centre on hover; the active link keeps it. */
+.link,
+.linkActive {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  white-space: nowrap;
+  transition: color 200ms ease;
+}
+
+.link::after,
+.linkActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 1.5px;
+  background: var(--color-gold-500);
+  transform: scaleX(0);
+  transition: transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .link {
   color: var(--color-cream-100);
 }
 
+.link:hover {
+  color: var(--color-gold-500);
+}
+
+.link:hover::after,
+.linkActive::after {
+  transform: scaleX(1);
+}
+
 .linkActive {
   color: var(--color-gold-500);
-  border-bottom: 1.5px solid var(--color-gold-500);
-  padding-bottom: 4px;
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: clamp(4px, 0.8vw, 10px);
   flex-shrink: 0;
 }
 
 .aboutBtn {
   display: inline-flex;
   align-items: center;
+  height: 40px;
+  margin-right: clamp(4px, 0.8vw, 10px);
   background: transparent;
   border: 1.5px solid var(--color-gold-500);
   border-radius: var(--radius-pill);
-  padding: 8px 18px;
+  padding: 0 20px;
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 12px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   color: var(--color-cream-100);
   cursor: pointer;
   white-space: nowrap;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
 .aboutBtn:hover {
@@ -70,6 +130,35 @@
 .iconLink {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  transition: background-color 200ms ease;
+}
+
+.iconLink:hover {
+  background: rgba(244, 239, 227, 0.08);
+}
+
+/* Narrow desktop/tablet: tighter tracking so the row never wraps. */
+@media (max-width: 960px) {
+  .links {
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+  }
+
+  .aboutBtn {
+    padding: 0 14px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link::after,
+  .linkActive::after {
+    transition: none;
+  }
 }
 
 .cartWrap {
@@ -78,8 +167,8 @@
 
 .cartBadge {
   position: absolute;
-  top: -9px;
-  right: -10px;
+  top: -1px;
+  right: -2px;
   background: var(--color-gold-500);
   color: var(--color-ink);
   font-family: var(--font-mono);

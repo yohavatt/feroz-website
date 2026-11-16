@@ -3,7 +3,9 @@ import Link from "next/link";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { ProductCard, type ProductCardBadge } from "@/components/product/ProductCard";
-import { CategoryCard } from "@/components/product/CategoryCard";
+import { CategoryCarousel } from "@/components/home/CategoryCarousel";
+import { AlpineBackdrop } from "@/components/home/AlpineBackdrop";
+import { RevealController } from "@/components/home/RevealController";
 import { CartIcon, ArrowRightIcon } from "@/components/icons";
 import styles from "./page.module.css";
 
@@ -42,10 +44,14 @@ const brandValues = [
   { icon: "/assets/icon-respectful-of-nature.svg", lines: ["Respectful", "Of Nature"] },
 ];
 
+// Stagger index for revealed groups (capped so later items never wait long).
+const stagger = (i: number) => ({ "--reveal-i": Math.min(i, 5) }) as React.CSSProperties;
+
 export default function Home() {
   return (
     <>
       <Nav />
+      <RevealController />
 
       {/* 2. Hero */}
       <div className={styles.hero}>
@@ -67,26 +73,30 @@ export default function Home() {
         </div>
         <div className={styles.heroCtaWrap}>
           <Link href="/sale" className={styles.heroCta}>
-            SHOP NOW
-            <CartIcon size={16} strokeWidth={2} />
+            <span className={styles.heroCtaLabel}>SHOP NOW</span>
+            {/* Cart at rest; on hover it slides out and an arrow slides in. */}
+            <span className={styles.heroCtaChip} aria-hidden="true">
+              <CartIcon size={17} strokeWidth={2} className={styles.heroCtaCart} />
+              <ArrowRightIcon size={17} strokeWidth={2} className={styles.heroCtaArrow} />
+            </span>
           </Link>
         </div>
       </div>
 
       {/* 3. Product category section */}
       <div className={styles.categorySection}>
-        <h2 className={styles.categoryHeading}>Shop by category</h2>
-        <div className={styles.categoryDivider} />
-        <div className={styles.categoryGrid}>
-          {categories.map((c) => (
-            <CategoryCard key={c.label} label={c.label} href={c.href} image={c.image} icon={c.icon} />
-          ))}
+        <div className={styles.reveal} data-reveal>
+          <h2 className={styles.categoryHeading}>Shop by category</h2>
+          <div className={styles.categoryDivider} />
+        </div>
+        <div className={styles.reveal} data-reveal style={stagger(1)}>
+          <CategoryCarousel categories={categories} />
         </div>
       </div>
 
       {/* 4. Featured products */}
       <div className={styles.featuredSection}>
-        <div className={styles.featuredHeader}>
+        <div className={`${styles.featuredHeader} ${styles.reveal}`} data-reveal>
           <div>
             <span className={styles.featuredEyebrow}>Handpicked</span>
             <h2 className={styles.featuredHeading}>Featured Products</h2>
@@ -96,39 +106,39 @@ export default function Home() {
           </Link>
         </div>
         <div className={styles.featuredGrid}>
-          {featuredProducts.map((p) => (
-            <ProductCard
-              key={p.slug}
-              name={p.name}
-              href={`/product/${p.slug}`}
-              image={p.image}
-              price={p.price}
-              compareAt={p.compareAt}
-              rating={p.rating}
-              badge={p.badge}
-              imageScale={p.imageScale}
-              imageObjectPosition={p.imageObjectPosition}
-              showEmptySpacer
-            />
+          {featuredProducts.map((p, i) => (
+            <div key={p.slug} className={styles.reveal} data-reveal style={stagger(i)}>
+              <ProductCard
+                variant="featured"
+                name={p.name}
+                href={`/product/${p.slug}`}
+                image={p.image}
+                price={p.price}
+                compareAt={p.compareAt}
+                rating={p.rating}
+                badge={p.badge}
+                imageScale={p.imageScale}
+                imageObjectPosition={p.imageObjectPosition}
+                showEmptySpacer
+              />
+            </div>
           ))}
         </div>
       </div>
 
       {/* 5. Brand values */}
       <div className={styles.brandValues}>
-        <Image
-          src="/assets/mountains-only.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className={styles.brandValuesBg}
-        />
-        <div className={styles.brandValuesOverlay} />
+        <AlpineBackdrop />
         <div className={styles.brandValuesInner}>
           <div className={styles.valuesGrid}>
-            {brandValues.map((v) => (
-              <div key={v.icon} className={styles.valueItem}>
-                <img src={v.icon} alt="" width={34} height={34} />
+            {brandValues.map((v, i) => (
+              <div
+                key={v.icon}
+                className={`${styles.valueItem} ${styles.reveal}`}
+                data-reveal
+                style={stagger(i)}
+              >
+                <img src={v.icon} alt="" width={68} height={68} className={styles.valueIcon} />
                 <div className={styles.valueLabel}>
                   {v.lines.map((line, i) => (
                     <span key={line}>
@@ -140,8 +150,8 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className={styles.valuesDivider} />
-          <div className={styles.valuesCopy}>
+          <div className={`${styles.valuesDivider} ${styles.reveal}`} data-reveal />
+          <div className={`${styles.valuesCopy} ${styles.reveal}`} data-reveal>
             <p>
               Built for the wild, FEROZ gear is made to endure. Crafted with
               durable materials and tested in demanding environments, our
@@ -165,10 +175,10 @@ export default function Home() {
       {/* 6. Lifestyle imagery */}
       <div className={styles.lifestyle}>
         <div className={styles.lifestyleInner}>
-          <div className={styles.lifestyleHeadingWrap}>
+          <div className={`${styles.lifestyleHeadingWrap} ${styles.reveal}`} data-reveal>
             <h2 className={styles.lifestyleHeading}>EVERY TRAIL. EVERY CONDITION.</h2>
           </div>
-          <div className={styles.lifestyleImageWrap}>
+          <div className={`${styles.lifestyleImageWrap} ${styles.reveal}`} data-reveal style={stagger(1)}>
             <Image
               src="/assets/every-trail.png"
               alt=""
@@ -183,7 +193,7 @@ export default function Home() {
       {/* 7. CTA / brand mission */}
       <div className={styles.cta}>
         <div className={styles.ctaStripes} />
-        <div className={styles.ctaInner}>
+        <div className={`${styles.ctaInner} ${styles.reveal}`} data-reveal>
           <span className={styles.ctaEyebrow}>Join The Expedition</span>
           <h2 className={styles.ctaHeading}>
             THE WILD DOESN&apos;T WAIT.
@@ -202,7 +212,7 @@ export default function Home() {
 
       {/* 8. Newsletter */}
       <div id="newsletter" className={styles.newsletter}>
-        <div className={styles.newsletterInner}>
+        <div className={`${styles.newsletterInner} ${styles.reveal}`} data-reveal>
           <h2 className={styles.newsletterHeading}>Join Our Email List</h2>
           <p className={styles.newsletterCopy}>
             First access to new drops, field notes, and expedition stories.

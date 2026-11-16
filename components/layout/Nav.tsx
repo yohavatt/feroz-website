@@ -11,7 +11,8 @@ import styles from "./Nav.module.css";
 // route instead of being hand-set per page like the source export.
 //
 // Two presentations share this one component:
-//   - >=721px: the approved desktop pill (.pill), untouched.
+//   - >=721px: the desktop pill (.pill): brand mark, evenly spread links,
+//     actions — a three-column grid so the links stay centred between them.
 //   - <=720px: a compact bar (.bar) plus a slide-in drawer. Both are
 //     display:none above the breakpoint, so nothing here reaches desktop.
 const primaryLinks = [
@@ -85,20 +86,30 @@ export function Nav({ cartCount, searchActive = false }: NavProps = {}) {
     <div className={styles.wrap} data-screen-label="Home">
       {/* ---- Desktop pill ---- */}
       <div className={styles.pill}>
-        <div className={styles.links}>
+        <Link href="/" className={styles.brand} aria-label="FEROZ home">
+          <Image
+            src="/assets/logo-white.png"
+            alt=""
+            width={54}
+            height={54}
+            className={styles.brandLogo}
+          />
+        </Link>
+        <nav className={styles.links} aria-label="Primary">
           {primaryLinks.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={active ? "page" : undefined}
                 className={active ? styles.linkActive : styles.link}
               >
                 {link.label}
               </Link>
             );
           })}
-        </div>
+        </nav>
         <div className={styles.actions}>
           <Link href="/about" className={styles.aboutBtn}>
             ABOUT US

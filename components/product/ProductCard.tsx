@@ -45,6 +45,10 @@ export interface ProductCardProps {
   /** Re-centres that closer crop when the subject sits off-centre in the
    *  source photo. Omitted everywhere else (defaults to the centred crop). */
   imageObjectPosition?: string;
+  /** "featured": Home's Featured Products presentation (taller image,
+   *  refined badge/price typography, hover-revealed wishlist). Every other
+   *  page omits it and keeps the default card exactly as before. */
+  variant?: "default" | "featured";
 }
 
 export function ProductCard({
@@ -60,6 +64,7 @@ export function ProductCard({
   showEmptySpacer,
   imageScale,
   imageObjectPosition,
+  variant = "default",
 }: ProductCardProps) {
   const imageFraming =
     imageScale || imageObjectPosition
@@ -70,14 +75,14 @@ export function ProductCard({
       : undefined;
 
   return (
-    <div>
+    <div className={variant === "featured" ? styles.featured : undefined}>
       <div className={styles.imageWrap} style={imageFraming}>
         <Link href={href} className={styles.imageLink}>
           <Image
             src={image}
             alt={name}
             fill
-            sizes="(max-width: 768px) 50vw, 25vw"
+            sizes={variant === "featured" ? "(max-width: 1099px) 50vw, 25vw" : "(max-width: 768px) 50vw, 25vw"}
             className={styles.image}
           />
         </Link>
